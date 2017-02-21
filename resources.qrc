@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/GeocoderPbh" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
