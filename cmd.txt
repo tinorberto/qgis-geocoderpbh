@@ -1,0 +1,2 @@
+--Comando para atualizar o qgis
+cp -r * c:\\Users\\pb003357\\.qgis2\\python\\plugins\\GeocoderPbh
