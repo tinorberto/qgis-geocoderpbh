@@ -28,7 +28,7 @@ import resources
 # Import the code for the dialog
 from geocoder_dialog import GeocoderPbhDialog
 import os.path
-
+import json, requests
 
 class GeocoderPbh:
     """QGIS Plugin Implementation."""
@@ -208,6 +208,10 @@ class GeocoderPbh:
         
         wkt = "LINESTRING ()" 
         
+        response = requests.get("http://geocoder.pbh.gov.br/geocoder/v1/address?logradouro=afonso pena")
+        print response.status_code
+        print response.content
+		
         print wkt;
         
         pt.setGeometry(QgsGeometry.fromWkt(wkt))
