@@ -202,10 +202,10 @@ class GeocoderPbh:
         # add the first point
         pt = QgsFeature()
 			
-        response = requests.get("http://geocoder.pbh.gov.br/geocoder/v1/address?logradouro=afonso pena")
+        response = requests.get("http://geocoder.pbh.gov.br/geocoder/v1/address?logradouro="+self.dlg.lineEdit.text())
         r =  response.json()
         wkt = r["endereco"][0]["wkt"]
-		print dlg.ui.label_2.text()
+        print self.dlg.lineEdit.text()
        
         pt.setGeometry(QgsGeometry.fromWkt(wkt))
         pr.addFeatures([pt])
