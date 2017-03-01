@@ -1,2 +1,6 @@
---Comando para atualizar o qgis
+--Comando para atualizar o qgis 
 cp -r * c:\\Users\\pb003357\\.qgis2\\python\\plugins\\GeocoderPbh
+
+cp -r * C:\Users\tinorberto\.qgis2\python\plugins\GeocoderPbh
+
+Copiar o module request para C:\Program Files\QGIS Lyon\apps\qgis\python

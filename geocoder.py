@@ -157,7 +157,7 @@ class GeocoderPbh:
 
         self.actions.append(action)
 		
-        self.dlg.sendButton.clicked.connect(self.teste)
+        self.dlg.sendButton.clicked.connect(self.send)
 
         return action
 		
@@ -196,12 +196,15 @@ class GeocoderPbh:
             # substitute with your code.
             pass
 
-    def teste(self):
+    def send(self):
         layer =  QgsVectorLayer('Point', 'points' , "memory")
         pr = layer.dataProvider() 
         # add the first point
         pt = QgsFeature()
-			
+        if self.dlg.lineEdit.text() == "" or len (self.dlg.lineEdit.text()) < 3:
+			QgsMessageLog.logMessage("O logradouro deve ter pelo menos 3 caracteres")
+			pass
+		
         response = requests.get("http://geocoder.pbh.gov.br/geocoder/v1/address?logradouro="+self.dlg.lineEdit.text())
         r =  response.json()
         wkt = r["endereco"][0]["wkt"]
