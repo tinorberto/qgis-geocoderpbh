@@ -197,7 +197,7 @@ class GeocoderPbh:
             pass
 
     def send(self):
-        layer =  QgsVectorLayer('Point', 'points' , "memory")
+        layer =  QgsVectorLayer('Point?crs=EPSG:29193', 'GeocorderPBH' , "memory")
         pr = layer.dataProvider() 
         # add the first point
         pt = QgsFeature()
@@ -207,7 +207,12 @@ class GeocoderPbh:
 		
         response = requests.get("http://geocoder.pbh.gov.br/geocoder/v1/address?logradouro="+self.dlg.lineEdit.text())
         r =  response.json()
-        wkt = r["endereco"][0]["wkt"]
+        
+        if r["endereco"] ["id"]== "":
+            QgsMessageLog.logMessage("Nenhum resultado encontrado")
+			pass
+
+		wkt = r["endereco"][0]["wkt"]
         print self.dlg.lineEdit.text()
        
         pt.setGeometry(QgsGeometry.fromWkt(wkt))
